@@ -19,5 +19,9 @@ pnpm dev
 
 ## Deploy
 
-Cada pasta é um projeto Vercel separado — `Root Directory` apontando
-para a pasta do cliente. Astro detectado automaticamente.
+Cada pasta é um projeto **Cloudflare Pages** separado, com `Root Directory`
+apontando pra pasta do cliente. Astro é detectado como framework
+automaticamente.
+
+Passo-a-passo completo do setup no README de cada cliente — ex:
+[`studio-lorena-paiva/README.md`](./studio-lorena-paiva/README.md#deploy--cloudflare-pages).

@@ -20,7 +20,7 @@ import { studio } from '../data/studio';
     </div>
 
     <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-      {studio.galeria.map((legenda, i) => {
+      {studio.galeria.map((foto, i) => {
         const aspect =
           i % 5 === 0
             ? 'aspect-[3/4]'
@@ -29,21 +29,22 @@ import { studio } from '../data/studio';
             : 'aspect-[4/5]';
         return (
           <figure
-            class={`placeholder-photo ${aspect} rounded-2xl ring-1 ring-ink-900/5 shadow-soft`}
+            class={`photo-frame ${aspect} rounded-2xl ring-1 ring-ink-900/5 shadow-soft`}
           >
+            <img
+              src={foto.img}
+              alt={foto.legenda}
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+            />
             <span class="placeholder-tag">Foto Lorena</span>
-            <figcaption class="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink-900/70 via-ink-900/20 to-transparent p-3 pt-10">
+            <figcaption class="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink-900/75 via-ink-900/25 to-transparent p-3 pt-10">
               <span class="font-serif text-sm text-bone-50 italic">
-                {legenda}
+                {foto.legenda}
               </span>
             </figcaption>
-            <div class="absolute inset-0 grid place-items-center">
-              <svg class="h-8 w-8 text-blush-400/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                <rect x="3" y="5" width="18" height="14" rx="2"/>
-                <circle cx="12" cy="12" r="3.2"/>
-                <path d="M8 5l1.5-2h5L16 5"/>
-              </svg>
-            </div>
           </figure>
         );
       })}

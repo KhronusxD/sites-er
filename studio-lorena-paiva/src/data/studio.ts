@@ -63,16 +63,47 @@ export const studio = {
       descricao: 'Make pra eventos, festas e ensaios.',
     },
   ],
+  imagens: {
+    hero: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=80&auto=format&fit=crop',
+    sobre: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=80&auto=format&fit=crop',
+  },
   galeria: [
-    'Corte com franja',
-    'Escova modelada',
-    'Coloração natural',
-    'Mechas iluminadas',
-    'Hidratação profunda',
-    'Design de sobrancelha',
-    'Make festa',
-    'Manicure clean',
-    'Penteado noiva',
+    {
+      img: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Corte com franja',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Escova modelada',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Coloração natural',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1595944927101-4ce10c8f4cd5?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Mechas iluminadas',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Hidratação profunda',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1605980776566-0486c3ac7617?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Design de sobrancelha',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Make festa',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Manicure clean',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80&auto=format&fit=crop',
+      legenda: 'Penteado noiva',
+    },
   ],
   depoimentos: [
     { nome: '— em breve —', texto: 'Espaço reservado para o primeiro depoimento de cliente.' },

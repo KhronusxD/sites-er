@@ -6,14 +6,17 @@ import { studio } from '../data/studio';
   <div class="container-narrow grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
     <div class="relative">
       <div
-        class="placeholder-photo aspect-[4/5] w-full rounded-[24px] shadow-soft ring-1 ring-ink-900/5"
+        class="photo-frame aspect-[4/5] w-full rounded-[24px] shadow-soft ring-1 ring-ink-900/5"
       >
+        <img
+          src={studio.imagens.sobre}
+          alt="Profissional cuidando do cabelo de uma cliente"
+          width="900"
+          height="1125"
+          loading="lazy"
+          decoding="async"
+        />
         <span class="placeholder-tag">Foto Lorena</span>
-        <div class="absolute inset-0 grid place-items-center px-6 text-center">
-          <p class="font-serif text-lg italic text-ink-700">
-            Retrato da Lorena<br />no salão
-          </p>
-        </div>
       </div>
       <div
         class="absolute -bottom-5 -right-5 hidden h-28 w-28 rounded-[18px] bg-blush-200 sm:block"
