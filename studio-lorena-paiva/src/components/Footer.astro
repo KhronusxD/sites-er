@@ -1,0 +1,68 @@
+---
+import { studio, whatsappLink } from '../data/studio';
+const ano = new Date().getFullYear();
+---
+
+<section class="relative overflow-hidden bg-ink-900 text-bone-100">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(60%_50%_at_80%_20%,#C9A95B_0%,transparent_55%),radial-gradient(50%_50%_at_15%_90%,#E2B5AD_0%,transparent_60%)]"
+  >
+  </div>
+
+  <div class="container-narrow relative py-20 text-center sm:py-24">
+    <span class="eyebrow !text-gold-400">Vamos marcar?</span>
+    <h2 class="heading-serif mt-5 text-4xl text-bone-100 sm:text-5xl md:text-6xl">
+      Marque pelo <span class="italic text-gold-400">WhatsApp</span>
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-bone-300/90">
+      Responde rapidinho — basta mandar uma mensagem dizendo o serviço que
+      você quer e um horário de preferência.
+    </p>
+
+    <a
+      href={whatsappLink()}
+      target="_blank"
+      rel="noopener"
+      class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-8 py-4 text-sm font-medium text-ink-900 transition hover:bg-bone-100 active:scale-[0.98]"
+    >
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"></path>
+        <path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.6c1.7 1 3.7 1.5 5.7 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 9.8-10 9.8z"></path>
+      </svg>
+      {studio.whatsapp.e164}
+    </a>
+
+    <div class="mt-12 grid gap-8 border-t border-bone-100/10 pt-12 text-left sm:grid-cols-3">
+      <div>
+        <h4 class="text-[11px] uppercase tracking-widerish text-gold-400">Endereço</h4>
+        <p class="mt-2 text-sm leading-relaxed text-bone-300/90">
+          {studio.endereco.rua}<br />
+          {studio.endereco.bairro}<br />
+          {studio.endereco.cidade}/{studio.endereco.estado} — {studio.endereco.cep}
+        </p>
+      </div>
+      <div>
+        <h4 class="text-[11px] uppercase tracking-widerish text-gold-400">Contato</h4>
+        <p class="mt-2 text-sm leading-relaxed text-bone-300/90">
+          WhatsApp<br />
+          <a href={whatsappLink()} target="_blank" rel="noopener" class="text-bone-100 hover:text-gold-400">
+            {studio.whatsapp.e164}
+          </a>
+        </p>
+      </div>
+      <div>
+        <h4 class="text-[11px] uppercase tracking-widerish text-gold-400">Navegue</h4>
+        <ul class="mt-2 space-y-1 text-sm text-bone-300/90">
+          <li><a href="#sobre" class="hover:text-gold-400">Sobre</a></li>
+          <li><a href="#servicos" class="hover:text-gold-400">Serviços</a></li>
+          <li><a href="#galeria" class="hover:text-gold-400">Galeria</a></li>
+          <li><a href="#localizacao" class="hover:text-gold-400">Localização</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="mt-12 border-t border-bone-100/10 pt-6 text-xs text-bone-300/70">
+      © {ano} {studio.nome}. Todos os direitos reservados.
+    </footer>
+  </div>
+</section>

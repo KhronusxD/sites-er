@@ -1,0 +1,48 @@
+---
+import { studio, whatsappLink } from '../data/studio';
+---
+
+<section id="servicos" class="bg-bone-200/60 py-20 sm:py-24">
+  <div class="container-narrow">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Serviços</span>
+      <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+        Cuidado completo para <span class="italic text-blush-500">cabelo, rosto e mãos</span>
+      </h2>
+      <p class="mt-5 text-base text-ink-700">
+        Trabalhamos com os principais serviços de beleza, sempre com produtos
+        profissionais e atendimento personalizado. Os valores são informados
+        no momento do agendamento, conforme o serviço.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {studio.servicos.map((s, i) => (
+        <li
+          class="group relative flex flex-col rounded-2xl border border-ink-900/8 bg-bone-50 p-5 transition hover:-translate-y-0.5 hover:border-gold-500/40 hover:shadow-soft"
+        >
+          <span class="font-serif text-xs text-gold-600">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h3 class="heading-serif mt-2 text-xl">{s.titulo}</h3>
+          <p class="mt-2 text-sm text-ink-700 leading-relaxed">{s.descricao}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-12 flex flex-col items-start gap-4 rounded-2xl border border-ink-900/8 bg-bone-50 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div>
+        <p class="heading-serif text-xl sm:text-2xl">
+          Não viu o serviço que você quer?
+        </p>
+        <p class="mt-1 text-sm text-ink-700">
+          Pergunta pra gente no WhatsApp — provavelmente atendemos.
+        </p>
+      </div>
+      <a href={whatsappLink('Olá Lorena! Tenho uma dúvida sobre um serviço.')}
+         target="_blank" rel="noopener" class="btn-primary">
+        Falar com a Lorena
+      </a>
+    </div>
+  </div>
+</section>

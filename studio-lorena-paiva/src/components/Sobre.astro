@@ -1,0 +1,67 @@
+---
+import { studio } from '../data/studio';
+---
+
+<section id="sobre" class="py-20 sm:py-24">
+  <div class="container-narrow grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+    <div class="relative">
+      <div
+        class="placeholder-photo aspect-[4/5] w-full rounded-[24px] shadow-soft ring-1 ring-ink-900/5"
+      >
+        <span class="placeholder-tag">Foto Lorena</span>
+        <div class="absolute inset-0 grid place-items-center px-6 text-center">
+          <p class="font-serif text-lg italic text-ink-700">
+            Retrato da Lorena<br />no salão
+          </p>
+        </div>
+      </div>
+      <div
+        class="absolute -bottom-5 -right-5 hidden h-28 w-28 rounded-[18px] bg-blush-200 sm:block"
+      ></div>
+    </div>
+
+    <div>
+      <span class="eyebrow">Sobre o studio</span>
+      <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+        Um espaço pensado pra quem busca <span class="italic text-blush-500">cuidado de verdade</span>
+      </h2>
+
+      <div class="mt-6 space-y-4 text-base text-ink-700 leading-relaxed">
+        <p>
+          O Studio Lorena Paiva nasceu da vontade de criar um lugar acolhedor
+          aqui na Colônia Santo Antônio — onde cada cliente é recebida pelo
+          nome, com tempo dedicado e atenção aos detalhes.
+        </p>
+        <p>
+          A Lorena conduz cada atendimento pessoalmente, do primeiro contato
+          ao último ajuste. Trabalhamos só com agendamento pra garantir que
+          ninguém divida o seu horário, e cada serviço seja feito com calma
+          e capricho.
+        </p>
+        <p>
+          Mais do que um salão, é um espaço de cuidado: pra você sair daqui
+          se sentindo bonita por dentro e por fora.
+        </p>
+      </div>
+
+      <dl class="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-ink-900/10 pt-6">
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-ink-500">Proprietária</dt>
+          <dd class="mt-1 font-serif text-lg text-ink-900">{studio.proprietaria}</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-ink-500">Modelo</dt>
+          <dd class="mt-1 font-serif text-lg text-ink-900">Por agendamento</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-ink-500">Bairro</dt>
+          <dd class="mt-1 font-serif text-lg text-ink-900">{studio.endereco.bairro}</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-ink-500">Cidade</dt>
+          <dd class="mt-1 font-serif text-lg text-ink-900">{studio.endereco.cidade}/{studio.endereco.estado}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

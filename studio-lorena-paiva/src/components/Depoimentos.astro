@@ -1,0 +1,38 @@
+---
+import { studio } from '../data/studio';
+---
+
+<section id="depoimentos" class="py-20 sm:py-24">
+  <div class="container-narrow">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Depoimentos</span>
+      <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+        O que as <span class="italic text-blush-500">nossas clientes</span> dizem
+      </h2>
+      <p class="mt-5 text-base text-ink-700">
+        Espaço reservado para os primeiros depoimentos do Studio. Em breve,
+        com fotos e nomes reais das clientes.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {studio.depoimentos.map((d) => (
+        <figure class="relative rounded-2xl border border-dashed border-ink-900/15 bg-bone-50 p-7">
+          <svg
+            class="absolute -top-3 left-6 h-7 w-7 text-blush-300"
+            viewBox="0 0 32 32"
+            fill="currentColor"
+          >
+            <path d="M9 9c-3 0-6 3-6 7s3 7 6 7h1v-7H6c0-2.2 1.8-4 3-4V9zm14 0c-3 0-6 3-6 7s3 7 6 7h1v-7h-4c0-2.2 1.8-4 3-4V9z"/>
+          </svg>
+          <blockquote class="font-serif text-lg italic leading-relaxed text-ink-700">
+            {d.texto}
+          </blockquote>
+          <figcaption class="mt-6 text-xs uppercase tracking-widerish text-ink-500">
+            {d.nome}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
