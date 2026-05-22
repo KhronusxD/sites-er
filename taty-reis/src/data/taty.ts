@@ -118,7 +118,7 @@ export const taty = {
     },
   ],
   imagens: {
-    hero: 'https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=900&q=80&auto=format&fit=crop',
+    hero: 'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=900&q=80&auto=format&fit=crop',
     sobre: 'https://images.unsplash.com/photo-1610466928435-bfa1e1908a6f?w=900&q=80&auto=format&fit=crop',
   },
   depoimentos: [
