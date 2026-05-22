@@ -4,7 +4,7 @@ import { clinic, imagens } from '../data/clinic';
 
 <section id="diferenciais" class="relative overflow-hidden bg-navy-700 py-20 text-bone-100 sm:py-24">
   <div
-    class="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(60%_50%_at_85%_15%,#B8C8B1_0%,transparent_55%),radial-gradient(50%_50%_at_10%_90%,#6E8867_0%,transparent_60%)]"
+    class="aurora-bg pointer-events-none absolute -inset-16 opacity-40 [background:radial-gradient(60%_50%_at_85%_15%,#B8C8B1_0%,transparent_55%),radial-gradient(50%_50%_at_10%_90%,#6E8867_0%,transparent_60%),radial-gradient(30%_30%_at_50%_50%,rgba(184,200,177,0.25)_0%,transparent_70%)]"
   >
   </div>
 
@@ -17,7 +17,7 @@ import { clinic, imagens } from '../data/clinic';
       </h2>
 
       <div class="mt-8 overflow-hidden rounded-2xl ring-1 ring-bone-50/10">
-        <div class="photo-frame aspect-[4/3] w-full">
+        <div class="photo-frame glow-ring aspect-[4/3] w-full rounded-2xl">
           <img
             src={imagens.scanner}
             alt="Scanner intra-oral em uso"
@@ -26,7 +26,7 @@ import { clinic, imagens } from '../data/clinic';
             loading="lazy"
             decoding="async"
           />
-          <span class="ai-tag">IA · demo</span>
+          <span class="ai-tag float-y-fast">IA · demo</span>
         </div>
       </div>
     </div>
