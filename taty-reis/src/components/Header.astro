@@ -1,0 +1,44 @@
+---
+import { taty, whatsappLink } from '../data/taty';
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-coffee-800/5 bg-sand-100/85 backdrop-blur supports-[backdrop-filter]:bg-sand-100/70"
+>
+  <div class="container-narrow flex h-16 items-center justify-between">
+    <a href="#topo" class="flex items-center gap-2.5 group">
+      <span
+        class="grid h-9 w-9 place-items-center rounded-full bg-coffee-700 text-honey-300 font-serif text-base italic leading-none"
+        >TR</span
+      >
+      <span class="flex flex-col leading-tight">
+        <span class="heading-serif text-base">{taty.nomeCurto}</span>
+        <span class="text-[10px] uppercase tracking-widerish text-coffee-500"
+          >{taty.tagline}</span
+        >
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm text-coffee-600">
+      <a href="#pilares" class="hover:text-coffee-800 transition">Serviços</a>
+      <a href="#galeria" class="hover:text-coffee-800 transition">Galeria</a>
+      <a href="#sobre" class="hover:text-coffee-800 transition">Sobre</a>
+      <a href="#depoimentos" class="hover:text-coffee-800 transition">Depoimentos</a>
+      <a href="#localizacao" class="hover:text-coffee-800 transition">Localização</a>
+    </nav>
+
+    <a
+      href={whatsappLink()}
+      target="_blank"
+      rel="noopener"
+      class="inline-flex items-center gap-2 rounded-full bg-coffee-700 px-4 py-2 text-xs font-medium text-sand-50 transition hover:bg-honey-500 sm:px-5 sm:text-sm"
+    >
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"></path>
+        <path d="M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.1 1.6 5.9L0 24l6.3-1.6c1.7 1 3.7 1.5 5.7 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 9.8-10 9.8z"></path>
+      </svg>
+      <span class="hidden sm:inline">Agendar</span>
+      <span class="sm:hidden">WhatsApp</span>
+    </a>
+  </div>
+</header>

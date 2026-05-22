@@ -1,0 +1,75 @@
+---
+import { taty } from '../data/taty';
+import RatingPill from './RatingPill.astro';
+---
+
+<section id="sobre" class="bg-sand-200/50 py-20 sm:py-24">
+  <div class="container-narrow grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+    <div class="relative">
+      <div
+        class="photo-frame aspect-[4/5] w-full rounded-[24px] shadow-soft ring-1 ring-coffee-800/5"
+      >
+        <img
+          src={taty.imagens.sobre}
+          alt="Atendimento profissional no salão"
+          width="900"
+          height="1125"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="placeholder-tag">Foto Taty</span>
+      </div>
+      <div
+        class="absolute -bottom-5 -right-5 hidden h-28 w-28 rounded-[18px] bg-honey-300/35 ring-1 ring-honey-400/30 sm:block"
+      ></div>
+    </div>
+
+    <div>
+      <span class="eyebrow">Sobre a Taty</span>
+      <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+        Uma profissional que <span class="italic text-honey-500">conhece cada cliente pelo nome</span>
+      </h2>
+
+      <div class="mt-6 space-y-4 text-base text-coffee-700 leading-relaxed">
+        <p>
+          A Taty trabalha com beleza há mais de uma década, e construiu
+          no bairro Da Paz, em Manaus, um espaço pequeno por escolha —
+          pra dar atenção total a quem senta na cadeira.
+        </p>
+        <p>
+          Cada atendimento é por agendamento, com o tempo certo pra
+          conversar, entender o que você quer e fazer com calma. É essa
+          dedicação que sustenta os <strong>4.9 no Google</strong>,
+          construídos um cliente de cada vez.
+        </p>
+        <p>
+          Estética, cabelo e bronze — três especialidades que se
+          completam pra entregar o resultado que combina com você.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <RatingPill />
+      </div>
+
+      <dl class="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-coffee-800/10 pt-6">
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-coffee-500">Especialidades</dt>
+          <dd class="mt-1 font-serif text-lg text-coffee-800">Estética · Cabelo · Bronze</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-coffee-500">Modelo</dt>
+          <dd class="mt-1 font-serif text-lg text-coffee-800">Por agendamento</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-coffee-500">Bairro</dt>
+          <dd class="mt-1 font-serif text-lg text-coffee-800">{taty.endereco.bairro}</dd>
+        </div>
+        <div>
+          <dt class="text-[11px] uppercase tracking-widerish text-coffee-500">Cidade</dt>
+          <dd class="mt-1 font-serif text-lg text-coffee-800">{taty.endereco.cidade}/{taty.endereco.estado}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

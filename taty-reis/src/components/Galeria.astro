@@ -1,0 +1,54 @@
+---
+import { taty } from '../data/taty';
+---
+
+<section id="galeria" class="py-20 sm:py-24">
+  <div class="container-narrow">
+    <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+      <div class="max-w-xl">
+        <span class="eyebrow">Galeria</span>
+        <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+          Resultados que <span class="italic text-honey-500">falam por si</span>
+        </h2>
+        <p class="mt-5 text-base text-coffee-600">
+          Estética, cabelo e bronze — uma amostra dos trabalhos do
+          studio. Em breve, fotos reais de antes e depois.
+        </p>
+      </div>
+      <p class="text-xs uppercase tracking-widerish text-coffee-500">
+        9 espaços pra fotos reais
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+      {taty.galeria.map((foto, i) => {
+        const aspect =
+          i % 5 === 0
+            ? 'aspect-[3/4]'
+            : i % 4 === 0
+            ? 'aspect-square'
+            : 'aspect-[4/5]';
+        return (
+          <figure
+            class={`photo-frame ${aspect} rounded-2xl ring-1 ring-coffee-800/5 shadow-soft`}
+          >
+            <img
+              src={foto.img}
+              alt={foto.legenda}
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="placeholder-tag">Foto Taty</span>
+            <figcaption class="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-coffee-900/80 via-coffee-900/25 to-transparent p-3 pt-10">
+              <span class="font-serif text-sm text-sand-50 italic">
+                {foto.legenda}
+              </span>
+            </figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  </div>
+</section>

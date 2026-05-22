@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-sand-100 text-coffee-800 font-sans;
+  }
+
+  ::selection {
+    @apply bg-honey-300 text-coffee-800;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply mx-auto w-full max-w-5xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] uppercase tracking-widerish text-honey-500;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-6 bg-honey-400;
+  }
+
+  .heading-serif {
+    @apply font-serif font-medium tracking-tightish text-coffee-800;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-coffee-700 px-7 py-4 text-sm font-medium text-sand-50 shadow-soft transition hover:bg-honey-500 active:scale-[0.98];
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-honey-400 to-honey-500 px-7 py-4 text-sm font-medium text-coffee-900 shadow-glow transition hover:from-honey-300 hover:to-honey-400 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-coffee-800/15 bg-transparent px-7 py-4 text-sm font-medium text-coffee-800 transition hover:border-coffee-800/40 hover:bg-sand-200;
+  }
+
+  .photo-frame {
+    @apply relative overflow-hidden bg-sand-200;
+  }
+
+  .photo-frame > img {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
+  .placeholder-tag {
+    @apply absolute left-3 top-3 z-10 rounded-full bg-coffee-800/85 px-3 py-1 text-[10px] font-medium uppercase tracking-widerish text-sand-50 backdrop-blur;
+  }
+
+  .rating-pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-honey-400/40 bg-gradient-to-r from-honey-200/60 to-sand-100 px-4 py-2 text-xs font-medium text-coffee-700 shadow-soft;
+  }
+
+  .star {
+    @apply text-honey-500;
+  }
+}

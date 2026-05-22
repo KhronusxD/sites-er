@@ -1,0 +1,49 @@
+---
+import { taty } from '../data/taty';
+import RatingPill from './RatingPill.astro';
+---
+
+<section id="depoimentos" class="bg-sand-200/50 py-20 sm:py-24">
+  <div class="container-narrow">
+    <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Depoimentos</span>
+        <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+          O que <span class="italic text-honey-500">as clientes dizem</span>
+        </h2>
+        <p class="mt-5 text-base text-coffee-600">
+          Reputação 4.9 no Google, construída cliente por cliente — abaixo,
+          trechos das avaliações reais. Espaço reservado pra preencher
+          com 3 depoimentos extraídos das reviews do Google na entrega.
+        </p>
+      </div>
+      <RatingPill />
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {taty.depoimentos.map((d) => (
+        <figure class="relative rounded-2xl border border-dashed border-coffee-800/15 bg-sand-50 p-7">
+          <div class="flex items-center gap-0.5">
+            {Array.from({ length: d.estrelas }).map(() => (
+              <svg class="h-4 w-4 star" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L10 14.9l-5.3 2.8 1-5.9L1.4 7.7l5.9-.9L10 1.5z"/>
+              </svg>
+            ))}
+          </div>
+          <blockquote class="mt-4 font-serif text-lg italic leading-relaxed text-coffee-700">
+            “{d.texto}”
+          </blockquote>
+          <figcaption class="mt-6 text-xs uppercase tracking-widerish text-coffee-500">
+            {d.nome}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <p class="mt-8 text-center text-xs text-coffee-500">
+      <a href={taty.maps.link} target="_blank" rel="noopener" class="underline-offset-2 hover:underline">
+        Ver todas as {taty.rating.total} avaliações no Google ↗
+      </a>
+    </p>
+  </div>
+</section>

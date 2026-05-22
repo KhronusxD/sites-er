@@ -1,0 +1,107 @@
+---
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/500.css';
+import '@fontsource/fraunces/600.css';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { taty } from '../data/taty';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = taty.seo.title,
+  description = taty.seo.description,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: taty.nome,
+  description: taty.seo.description,
+  url: Astro.site?.toString(),
+  telephone: taty.whatsapp.e164,
+  image: `${Astro.site?.toString() ?? ''}og.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: taty.endereco.rua,
+    addressLocality: taty.endereco.cidade,
+    addressRegion: taty.endereco.estado,
+    postalCode: taty.endereco.cep,
+    addressCountry: 'BR',
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Manaus',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '19:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: taty.rating.valor,
+    reviewCount: taty.rating.total,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  sameAs: [taty.maps.link],
+  priceRange: '$$',
+  makesOffer: taty.pilares.map((p) => ({
+    '@type': 'Offer',
+    name: p.titulo,
+    description: p.descricao,
+  })),
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#F8F2E8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={taty.seo.keywords} />
+    <meta name="author" content={taty.nome} />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={taty.nome} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(localBusinessSchema)}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

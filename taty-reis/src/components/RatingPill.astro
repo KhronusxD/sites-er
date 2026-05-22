@@ -1,0 +1,27 @@
+---
+import { taty } from '../data/taty';
+const { compact = false } = Astro.props;
+const stars = Math.round(taty.rating.valor);
+---
+
+<a
+  href={taty.maps.link}
+  target="_blank"
+  rel="noopener"
+  class="rating-pill group"
+  aria-label={`Reputação ${taty.rating.valor} no Google com ${taty.rating.total} avaliações`}
+>
+  <span class="flex items-center gap-0.5">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <svg class={`h-3.5 w-3.5 ${i < stars ? 'star' : 'text-coffee-800/15'}`} viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L10 14.9l-5.3 2.8 1-5.9L1.4 7.7l5.9-.9L10 1.5z"/>
+      </svg>
+    ))}
+  </span>
+  <span class="font-semibold text-coffee-800">{taty.rating.valor.toFixed(1)}</span>
+  {!compact && (
+    <span class="text-coffee-600">
+      no Google · <span class="underline-offset-2 group-hover:underline">{taty.rating.total} avaliações</span>
+    </span>
+  )}
+</a>

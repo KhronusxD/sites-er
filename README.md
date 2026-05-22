@@ -7,7 +7,8 @@ Cada cliente em sua própria pasta, com stack e deploy independentes.
 
 | Cliente | Pasta | Stack | Status |
 |---|---|---|---|
-| Studio Lorena Paiva (Salão · Manaus) | [`studio-lorena-paiva/`](./studio-lorena-paiva) | Astro + Tailwind | 🟢 LP demo |
+| Studio Lorena Paiva (Salão · Manaus) | [`studio-lorena-paiva/`](./studio-lorena-paiva) | Astro + Tailwind | 🟢 [studio-lorena-paiva.pages.dev](https://studio-lorena-paiva.pages.dev) |
+| Taty Reis (Estética · Cabelo · Bronze · Manaus) | [`taty-reis/`](./taty-reis) | Astro + Tailwind | 🟢 [taty-reis.pages.dev](https://taty-reis.pages.dev) |
 
 ## Como rodar uma LP
 
