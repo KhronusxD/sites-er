@@ -9,6 +9,7 @@ Cada cliente em sua própria pasta, com stack e deploy independentes.
 |---|---|---|---|
 | Studio Lorena Paiva (Salão · Manaus) | [`studio-lorena-paiva/`](./studio-lorena-paiva) | Astro + Tailwind | 🟢 [studio-lorena-paiva.pages.dev](https://studio-lorena-paiva.pages.dev) |
 | Taty Reis (Estética · Cabelo · Bronze · Manaus) | [`taty-reis/`](./taty-reis) | Astro + Tailwind | 🟢 [taty-reis.pages.dev](https://taty-reis.pages.dev) |
+| Aurora Odontologia (clínica fictícia · demo de venda) | [`aurora-odontologia/`](./aurora-odontologia) | Astro + Tailwind + IA Higgsfield | 🟢 [aurora-odontologia.pages.dev](https://aurora-odontologia.pages.dev) |
 
 ## Como rodar uma LP
 

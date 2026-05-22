@@ -1,0 +1,37 @@
+---
+import { clinic } from '../data/clinic';
+import WhatsAppButton from './WhatsAppButton.astro';
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-navy-700/5 bg-bone-100/85 backdrop-blur supports-[backdrop-filter]:bg-bone-100/70"
+>
+  <div class="container-narrow flex h-16 items-center justify-between">
+    <a href="#topo" class="flex items-center gap-2.5">
+      <span
+        class="grid h-9 w-9 place-items-center rounded-full bg-navy-700 text-sage-300 font-serif text-xl leading-none"
+        >A</span
+      >
+      <span class="flex flex-col leading-tight">
+        <span class="heading-serif text-lg">{clinic.nomeCurto}</span>
+        <span class="text-[10px] uppercase tracking-widerish text-slate-400"
+          >{clinic.tagline}</span
+        >
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-500">
+      <a href="#especialidades" class="hover:text-navy-700 transition">Especialidades</a>
+      <a href="#diferenciais" class="hover:text-navy-700 transition">Diferenciais</a>
+      <a href="#equipe" class="hover:text-navy-700 transition">Equipe</a>
+      <a href="#casos" class="hover:text-navy-700 transition">Casos</a>
+      <a href="#faq" class="hover:text-navy-700 transition">Dúvidas</a>
+      <a href="#localizacao" class="hover:text-navy-700 transition">Localização</a>
+    </nav>
+
+    <WhatsAppButton
+      label="Agendar"
+      className="!px-5 !py-2.5 !text-xs sm:!text-sm"
+    />
+  </div>
+</header>

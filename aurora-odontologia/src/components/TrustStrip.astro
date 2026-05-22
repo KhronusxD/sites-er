@@ -1,0 +1,17 @@
+---
+import { clinic } from '../data/clinic';
+---
+
+<section class="border-y border-navy-700/10 bg-bone-50">
+  <div class="container-narrow flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-5 text-[11px] uppercase tracking-widerish text-slate-400">
+    {clinic.selos.map((s, i) => (
+      <span class="flex items-center gap-2">
+        <svg class="h-3.5 w-3.5 text-sage-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm4.7-9.3a1 1 0 00-1.4-1.4L9 11.6 7.7 10.3a1 1 0 00-1.4 1.4l2 2a1 1 0 001.4 0l5-5z" clip-rule="evenodd"/>
+        </svg>
+        {s}
+        {i < clinic.selos.length - 1 && <span class="ml-8 h-1 w-1 rounded-full bg-navy-700/15"></span>}
+      </span>
+    ))}
+  </div>
+</section>

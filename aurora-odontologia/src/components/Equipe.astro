@@ -1,0 +1,48 @@
+---
+import { clinic, imagens } from '../data/clinic';
+---
+
+<section id="equipe" class="py-20 sm:py-24">
+  <div class="container-narrow">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Equipe</span>
+      <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+        Especialistas que <em>resolvem juntos.</em>
+      </h2>
+      <p class="mt-5 text-base text-slate-500">
+        Cada caso passa por avaliação multidisciplinar. Você é atendida
+        por quem tem especialidade no seu tratamento — sem
+        encaminhamentos pra fora da clínica.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {clinic.equipe.map((p, i) => {
+        const fallback = imagens.dentista;
+        return (
+          <article class="card-clean overflow-hidden transition hover:-translate-y-0.5 hover:shadow-ring">
+            <div class="photo-frame aspect-[3/4] w-full">
+              <img
+                src={fallback}
+                alt={`Retrato de ${p.nome}`}
+                width="600"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="ai-tag">IA · demo</span>
+            </div>
+            <div class="p-6">
+              <p class="text-[11px] uppercase tracking-widerish text-sage-600">
+                {String(i + 1).padStart(2, '0')} · {p.cro}
+              </p>
+              <h3 class="heading-serif mt-2 text-2xl">{p.nome}</h3>
+              <p class="mt-1 text-sm font-medium text-navy-700">{p.titulo}</p>
+              <p class="mt-3 text-sm text-slate-500 leading-relaxed">{p.formacao}</p>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

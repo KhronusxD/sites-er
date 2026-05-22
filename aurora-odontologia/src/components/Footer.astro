@@ -1,0 +1,71 @@
+---
+import { clinic } from '../data/clinic';
+import WhatsAppButton from './WhatsAppButton.astro';
+const ano = new Date().getFullYear();
+---
+
+<section class="relative overflow-hidden bg-navy-700 text-bone-100">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(60%_50%_at_80%_20%,#B8C8B1_0%,transparent_55%),radial-gradient(50%_50%_at_15%_90%,#6E8867_0%,transparent_60%)]"
+  >
+  </div>
+
+  <div class="container-narrow relative py-20 text-center sm:py-24">
+    <span class="eyebrow !text-sage-300">Vamos cuidar do seu sorriso?</span>
+    <h2 class="heading-serif mt-5 text-4xl text-bone-50 sm:text-5xl md:text-6xl">
+      Marque uma <span class="italic text-sage-300">avaliação.</span>
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-bone-100/75">
+      Resposta em até 1 hora útil. Avaliação inicial inclui exame
+      clínico, fotos intra-orais e, quando indicado, escaneamento 3D.
+    </p>
+
+    <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+      <WhatsAppButton
+        label={clinic.whatsapp.e164}
+        className="!bg-sage-400 !text-navy-800 hover:!bg-bone-50"
+      />
+      <a
+        href={clinic.maps.link}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-full border border-bone-50/20 px-6 py-3.5 text-sm font-medium text-bone-50 transition hover:border-sage-300/60"
+      >
+        Como chegar
+        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M11 3a1 1 0 100 2h2.6L8.3 10.3a1 1 0 101.4 1.4L15 6.4V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="mt-16 grid gap-8 border-t border-bone-50/10 pt-12 text-left sm:grid-cols-4">
+      <div class="sm:col-span-2">
+        <span class="grid h-9 w-9 place-items-center rounded-full bg-bone-50 text-navy-700 font-serif text-xl">A</span>
+        <p class="heading-serif mt-3 text-2xl text-bone-50">{clinic.nome}</p>
+        <p class="mt-2 text-sm text-bone-100/70 max-w-sm">
+          {clinic.positioning}
+        </p>
+      </div>
+      <div>
+        <h4 class="text-[11px] uppercase tracking-widerish text-sage-300">Contato</h4>
+        <p class="mt-2 text-sm leading-relaxed text-bone-100/85">
+          WhatsApp<br />
+          <span class="text-bone-50">{clinic.whatsapp.e164}</span>
+        </p>
+      </div>
+      <div>
+        <h4 class="text-[11px] uppercase tracking-widerish text-sage-300">Endereço</h4>
+        <p class="mt-2 text-sm leading-relaxed text-bone-100/85">
+          {clinic.endereco.rua}<br />
+          {clinic.endereco.bairro}<br />
+          {clinic.endereco.cidade}/{clinic.endereco.estado}
+        </p>
+      </div>
+    </div>
+
+    <footer class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-bone-50/10 pt-6 text-[11px] text-bone-100/60 sm:flex-row">
+      <span>© {ano} {clinic.nome} · Material demonstrativo</span>
+      <span class="uppercase tracking-widerish">Manaus · Brasil</span>
+    </footer>
+  </div>
+</section>

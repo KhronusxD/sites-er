@@ -1,0 +1,109 @@
+---
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { clinic } from '../data/clinic';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = clinic.seo.title,
+  description = clinic.seo.description,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+const dentistSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dentist',
+  name: clinic.nome,
+  description: clinic.seo.description,
+  url: Astro.site?.toString(),
+  telephone: clinic.whatsapp.e164,
+  image: `${Astro.site?.toString() ?? ''}og.jpg`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: clinic.endereco.rua,
+    addressLocality: clinic.endereco.cidade,
+    addressRegion: clinic.endereco.estado,
+    postalCode: clinic.endereco.cep,
+    addressCountry: 'BR',
+  },
+  areaServed: { '@type': 'City', name: 'Manaus' },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '08:00',
+      closes: '14:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: clinic.rating.valor,
+    reviewCount: clinic.rating.total,
+    bestRating: 5,
+    worstRating: 1,
+  },
+  medicalSpecialty: clinic.especialidades.map((e) => e.titulo),
+  priceRange: '$$$',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: clinic.faq.map((q) => ({
+    '@type': 'Question',
+    name: q.pergunta,
+    acceptedAnswer: { '@type': 'Answer', text: q.resposta },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#F8F5EE" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={clinic.seo.keywords} />
+    <meta name="author" content={clinic.nome} />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={clinic.nome} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(dentistSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

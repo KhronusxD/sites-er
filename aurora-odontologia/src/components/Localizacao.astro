@@ -1,0 +1,77 @@
+---
+import { clinic, imagens } from '../data/clinic';
+const mapSrc = `https://www.google.com/maps?q=${clinic.maps.embedQuery}&output=embed`;
+---
+
+<section id="localizacao" class="py-20 sm:py-24">
+  <div class="container-narrow grid gap-10 md:grid-cols-2 md:gap-14">
+    <div>
+      <span class="eyebrow">Onde estamos</span>
+      <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+        Em <em>Adrianópolis</em>, no coração de Manaus.
+      </h2>
+
+      <address class="mt-6 not-italic">
+        <p class="text-base text-navy-700 leading-relaxed">
+          {clinic.endereco.rua}<br />
+          {clinic.endereco.bairro} · {clinic.endereco.cidade}/{clinic.endereco.estado}<br />
+          CEP {clinic.endereco.cep}
+        </p>
+      </address>
+
+      <a
+        href={clinic.maps.link}
+        target="_blank"
+        rel="noopener"
+        class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-sage-600 hover:text-sage-500"
+      >
+        Abrir no Google Maps
+        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M11 3a1 1 0 100 2h2.6L8.3 10.3a1 1 0 101.4 1.4L15 6.4V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 100-2H5z"/>
+        </svg>
+      </a>
+
+      <div class="mt-10 overflow-hidden rounded-2xl shadow-soft ring-1 ring-navy-700/5">
+        <div class="photo-frame aspect-[3/2]">
+          <img
+            src={imagens.ambiente}
+            alt="Recepção da Aurora Odontologia"
+            width="1200"
+            height="800"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="ai-tag">IA · demo</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="rounded-2xl border border-navy-700/10 bg-bone-50 p-6">
+        <h3 class="heading-serif text-xl">Horário de atendimento</h3>
+        <ul class="mt-4 divide-y divide-navy-700/10 text-sm">
+          {clinic.horarios.map((h) => (
+            <li class="flex items-center justify-between py-3">
+              <span class="text-slate-500">{h.dia}</span>
+              <span class={`font-medium text-right ${h.horario === 'Fechado' ? 'text-slate-400' : 'text-navy-700'}`}>
+                {h.horario}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="mt-6 overflow-hidden rounded-2xl shadow-soft ring-1 ring-navy-700/5">
+        <iframe
+          src={mapSrc}
+          title={`Mapa ${clinic.nome}`}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="block h-[360px] w-full md:h-[420px]"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+import { clinic } from '../data/clinic';
+---
+
+<section id="depoimentos" class="py-20 sm:py-24">
+  <div class="container-narrow">
+    <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Depoimentos</span>
+        <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+          {clinic.rating.valor.toFixed(1)} no Google, <em>com {clinic.rating.total} avaliações.</em>
+        </h2>
+      </div>
+      <div class="flex items-center gap-1 text-sage-500">
+        {Array.from({ length: 5 }).map(() => (
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L10 14.9l-5.3 2.8 1-5.9L1.4 7.7l5.9-.9L10 1.5z"/>
+          </svg>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {clinic.depoimentos.map((d) => (
+        <figure class="card-clean p-7">
+          <div class="flex items-center gap-0.5 text-sage-500">
+            {Array.from({ length: d.estrelas }).map(() => (
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L10 14.9l-5.3 2.8 1-5.9L1.4 7.7l5.9-.9L10 1.5z"/>
+              </svg>
+            ))}
+          </div>
+          <blockquote class="mt-4 font-serif text-lg italic leading-relaxed text-slate-600">
+            “{d.texto}”
+          </blockquote>
+          <figcaption class="mt-6 border-t border-navy-700/10 pt-4">
+            <p class="font-medium text-navy-700">{d.nome}</p>
+            <p class="text-xs uppercase tracking-widerish text-slate-400">{d.contexto}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

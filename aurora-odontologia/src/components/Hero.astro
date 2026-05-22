@@ -1,0 +1,67 @@
+---
+import { clinic, imagens } from '../data/clinic';
+import WhatsAppButton from './WhatsAppButton.astro';
+---
+
+<section id="topo" class="relative overflow-hidden">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 [background:radial-gradient(70%_55%_at_85%_10%,#D7E1D2_0%,transparent_55%),radial-gradient(55%_55%_at_5%_95%,#EFEADB_0%,transparent_60%)]"
+  >
+  </div>
+
+  <div class="container-narrow grid items-center gap-10 py-16 sm:py-20 md:grid-cols-[1.05fr_0.95fr] md:py-24 lg:gap-16">
+    <div class="order-2 md:order-1">
+      <span class="eyebrow">Clínica em Manaus · {clinic.endereco.bairro}</span>
+
+      <h1 class="heading-serif mt-5 text-[2.6rem] leading-[1.04] sm:text-[3.2rem] md:text-[3.6rem] lg:text-[4.2rem]">
+        Cuidado clínico,
+        <span class="block italic text-sage-500">resultado estético.</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-base text-slate-500 sm:text-lg">
+        Clínica integrada de odontologia em Adrianópolis — implantes,
+        ortodontia digital, estética e prevenção, num ambiente
+        boutique. Atendimento humanizado, planejamento em 3D e
+        equipe especialista.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <WhatsAppButton label="Agendar avaliação" />
+        <a href="#especialidades" class="btn-secondary">
+          Ver especialidades
+        </a>
+      </div>
+
+      <dl class="mt-12 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-navy-700/10 pt-8 sm:grid-cols-4">
+        {clinic.kpis.map((k) => (
+          <div>
+            <dt class="text-[10px] uppercase tracking-widerish text-slate-400">{k.label}</dt>
+            <dd class="mt-1 font-serif text-2xl text-navy-700 sm:text-3xl">{k.valor}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="order-1 md:order-2">
+      <div class="relative">
+        <div
+          class="photo-frame aspect-[4/5] w-full rounded-[28px] shadow-ring ring-1 ring-navy-700/5"
+        >
+          <img
+            src={imagens.hero}
+            alt="Sorriso saudável após tratamento na Aurora"
+            width="900"
+            height="1125"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <span class="ai-tag">IA · demo</span>
+        </div>
+
+        <div class="absolute -bottom-5 -left-5 hidden h-28 w-28 rounded-[18px] bg-sage-300/30 ring-1 ring-sage-400/30 backdrop-blur sm:block"></div>
+        <div class="absolute -right-3 -top-3 hidden h-16 w-16 rounded-full bg-navy-700 sm:block"></div>
+      </div>
+    </div>
+  </div>
+</section>

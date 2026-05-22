@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bone-100 text-navy-700 font-sans;
+  }
+
+  ::selection {
+    @apply bg-sage-300/60 text-navy-700;
+  }
+
+  /* Reserve serif italic vibe by default for h1-h2 via class */
+}
+
+@layer components {
+  .container-narrow {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .container-tight {
+    @apply mx-auto w-full max-w-5xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] uppercase tracking-widerish text-sage-600;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-6 bg-sage-500;
+  }
+
+  .heading-serif {
+    @apply font-serif font-normal tracking-tighter text-navy-700;
+  }
+
+  .heading-serif em,
+  .heading-serif .em {
+    @apply not-italic font-serif text-sage-500;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy-700 px-6 py-3.5 text-sm font-medium text-bone-50 shadow-soft transition hover:bg-sage-500 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy-700/15 bg-transparent px-6 py-3.5 text-sm font-medium text-navy-700 transition hover:border-navy-700/40 hover:bg-bone-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-navy-700 hover:text-sage-600 transition;
+  }
+
+  .photo-frame {
+    @apply relative overflow-hidden bg-sage-200;
+  }
+
+  .photo-frame > img {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
+  .ai-tag {
+    @apply absolute right-3 top-3 z-10 rounded-full bg-navy-700/85 px-3 py-1 text-[10px] font-medium uppercase tracking-widerish text-bone-50 backdrop-blur;
+  }
+
+  .card-clean {
+    @apply rounded-2xl border border-navy-700/10 bg-bone-50 shadow-soft;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-navy-700/10 bg-bone-50/70 px-2.5 py-1 text-[11px] font-medium text-navy-700;
+  }
+
+  /* Reveal-on-scroll style baseline (no JS yet — using CSS only) */
+  .reveal {
+    @apply opacity-100;
+  }
+}

@@ -1,0 +1,53 @@
+---
+import { clinic } from '../data/clinic';
+import WhatsAppButton from './WhatsAppButton.astro';
+---
+
+<section id="faq" class="bg-bone-200/50 py-20 sm:py-24">
+  <div class="container-tight">
+    <div class="grid gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
+      <div>
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2 class="heading-serif mt-4 text-3xl sm:text-4xl md:text-5xl">
+          Respondemos antes <em>de você marcar.</em>
+        </h2>
+        <p class="mt-5 text-sm text-slate-500">
+          Se a sua pergunta não estiver aqui, fale com a gente no WhatsApp.
+          Resposta em até 1h útil.
+        </p>
+        <div class="mt-6">
+          <WhatsAppButton
+            label="Tirar dúvida no WhatsApp"
+            mensagem="Olá! Tenho uma dúvida antes de marcar."
+            variant="secondary"
+          />
+        </div>
+      </div>
+
+      <ul class="divide-y divide-navy-700/10">
+        {clinic.faq.map((q, i) => (
+          <li class="py-1">
+            <details class="group py-3" {...(i === 0 ? { open: true } : {})}>
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-4 py-2 text-left text-base font-medium text-navy-700 hover:text-sage-600 transition">
+                <span class="flex-1">{q.pergunta}</span>
+                <svg
+                  class="mt-1 h-4 w-4 flex-shrink-0 transition group-open:rotate-45"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                >
+                  <path d="M8 3v10M3 8h10"/>
+                </svg>
+              </summary>
+              <p class="mt-1 pb-3 pr-6 text-sm leading-relaxed text-slate-500">
+                {q.resposta}
+              </p>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
