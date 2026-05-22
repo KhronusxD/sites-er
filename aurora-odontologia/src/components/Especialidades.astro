@@ -30,7 +30,10 @@ const icones: Record<string, string> = {
 
     <ul class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {clinic.especialidades.map((e, i) => (
-        <li class="card-glow group relative flex flex-col rounded-2xl border border-navy-700/10 bg-bone-50 p-5 transition hover:-translate-y-0.5 hover:border-sage-400/50 hover:shadow-soft">
+        <li
+          class="spotlight spotlight-card group relative flex flex-col rounded-2xl border border-navy-700/10 bg-bone-50 p-5 transition hover:-translate-y-0.5 hover:border-sage-400/50 hover:shadow-soft"
+          data-spotlight
+        >
           <span class="font-mono text-[11px] text-sage-600">
             {String(i + 1).padStart(2, '0')}
           </span>

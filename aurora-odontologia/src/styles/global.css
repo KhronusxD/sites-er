@@ -123,7 +123,10 @@
     animation: float-y 3.5s ease-in-out infinite;
   }
 
-  /* Glow ring around containers (uses ::before with conic gradient) */
+  /* Glow ring around containers — animates the conic-gradient ANGLE
+     (via @property + custom prop), not the box rotation. Light
+     travels around the perimeter instead of the gradient spinning
+     in the middle. */
   .glow-ring {
     position: relative;
     isolation: isolate;
@@ -136,11 +139,12 @@
     border-radius: inherit;
     padding: 2px;
     background: conic-gradient(
-      from 0deg,
+      from var(--glow-angle, 0deg),
       transparent 0deg,
-      rgba(184, 200, 177, 0.6) 50deg,
-      rgba(146, 169, 138, 0.8) 90deg,
-      transparent 140deg,
+      rgba(184, 200, 177, 0.55) 40deg,
+      rgba(146, 169, 138, 0.95) 80deg,
+      rgba(184, 200, 177, 0.55) 120deg,
+      transparent 160deg,
       transparent 360deg
     );
     -webkit-mask:
@@ -148,9 +152,52 @@
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
-    animation: spin-slow 9s linear infinite;
+    animation: glow-rotate 7s linear infinite;
     pointer-events: none;
     z-index: 1;
+  }
+
+  /* Spotlight that follows the mouse — uses CSS custom props
+     --mx / --my set by a tiny inline pointermove listener.
+     Lives at z-index -1 inside an isolated stacking context, so
+     it's always behind the section content but on top of the
+     ambient aurora-bg (which is at -10). */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      var(--spotlight-size, 560px) circle at var(--mx, -100%) var(--my, -100%),
+      var(--spotlight-color, rgba(184, 200, 177, 0.3)),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .spotlight:hover::before,
+  .spotlight:focus-within::before {
+    opacity: 1;
+  }
+
+  /* Variant for cards — smaller radius, sage color */
+  .spotlight-card {
+    --spotlight-size: 240px;
+    --spotlight-color: rgba(146, 169, 138, 0.22);
+  }
+
+  /* Variant for dark sections (footer) — warmer sage */
+  .spotlight-dark {
+    --spotlight-size: 600px;
+    --spotlight-color: rgba(184, 200, 177, 0.18);
   }
 
   /* Pulse glow for accent dots */
@@ -164,28 +211,17 @@
     transform-origin: left center;
   }
 
-  /* Card hover glow (extra over Tailwind hover) */
-  .card-glow {
-    @apply transition;
-    position: relative;
-  }
-  .card-glow::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: radial-gradient(
-      60% 80% at 50% 0%,
-      rgba(146, 169, 138, 0.18),
-      transparent 70%
-    );
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    pointer-events: none;
-  }
-  .card-glow:hover::after {
-    opacity: 1;
-  }
+}
+
+/* ============================================================
+   @property registrations — must be at the top level (not inside
+   a layer or rule). Browsers without support fall back to a
+   static gradient (no animation), which still looks fine.
+   ============================================================ */
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
 /* ============================================================
@@ -204,6 +240,12 @@
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes glow-rotate {
+  to {
+    --glow-angle: 360deg;
   }
 }
 

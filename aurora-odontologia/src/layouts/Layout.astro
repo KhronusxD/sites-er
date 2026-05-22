@@ -105,5 +105,23 @@ const faqSchema = {
   </head>
   <body>
     <slot />
+
+    <script is:inline>
+      // Spotlight follow-cursor — desktop only, no-op on touch.
+      // Updates --mx / --my CSS custom props on [data-spotlight] elements.
+      (function () {
+        if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var handle = function (e) {
+          var el = e.currentTarget;
+          var r = el.getBoundingClientRect();
+          el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        };
+        document.querySelectorAll('[data-spotlight]').forEach(function (el) {
+          el.addEventListener('pointermove', handle, { passive: true });
+        });
+      })();
+    </script>
   </body>
 </html>
